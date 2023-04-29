@@ -5,12 +5,12 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
-  async ({ rejectWithValue }) => {
+  async (_, { rejectedWithValue }) => {
     try {
       const response = await axios.get('/contacts');
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectedWithValue(error.message);
     }
   }
 );
@@ -39,7 +39,7 @@ export const addContact = createAsyncThunk(
   }
 );
 
-export const toggleFavorite = createAsyncThunk(
+/* export const toggleFavorite = createAsyncThunk(
   'contacts/toggleFavorite',
   async (contact, { rejectWithValue }) => {
     try {
@@ -62,3 +62,4 @@ export const editContact = createAsyncThunk(
     }
   }
 );
+ */
