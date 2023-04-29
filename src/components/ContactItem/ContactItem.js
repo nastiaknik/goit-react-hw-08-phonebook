@@ -105,11 +105,11 @@ ContactItem.propTypes = {
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
-      isFavorite: PropTypes.bool.isRequired,
+      /* isFavorite: PropTypes.bool.isRequired,
       colors: PropTypes.shape({
         color: PropTypes.string,
         backgroundColor: PropTypes.string,
-      }),
+      }), */
     }).isRequired
   ).isRequired,
 };

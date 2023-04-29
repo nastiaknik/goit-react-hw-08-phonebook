@@ -38,8 +38,8 @@ export const AddContactForm = () => {
     const contact = {
       name: values.name,
       number: values.number,
-      colors: getRandomColor(),
-      isFavourite: false,
+/*       colors: getRandomColor(),
+      isFavourite: false, */
     };
 
     const contactExists = contacts.some(item => {
