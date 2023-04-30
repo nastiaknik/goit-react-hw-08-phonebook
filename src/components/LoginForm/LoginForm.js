@@ -1,32 +1,115 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { Formik, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { BiErrorCircle } from 'react-icons/bi';
+import {
+  InputContainer,
+  Button,
+  StyledField,
+  LabelContainer,
+  Form,
+  Error,
+} from './LoginForm.styled';
+
+const logInSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  password: Yup.string()
+    .required('Password is required')
+    .min(6, 'Password must be at least 6 characters long'),
+});
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const handleSubmit = values => {
     dispatch(
       logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        email: values.email,
+        password: values.password,
       })
     );
-    form.reset();
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="on">
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <Formik
+      initialValues={{ name: '', email: '', password: '' }}
+      onSubmit={handleSubmit}
+      validationSchema={logInSchema}
+    >
+      {props => {
+        return (
+          <Form>
+            <InputContainer>
+              <LabelContainer>
+                <div
+                  style={{
+                    display: 'flex',
+                    wtap: 'nowrap',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <label htmlFor="email">Email</label>
+                  <StyledField
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="nugget@gmail.com"
+                    value={props.values.number}
+                    onChange={props.handleChange}
+                    className={
+                      props.touched.email && props.errors.email ? 'error' : ''
+                    }
+                  />
+                </div>
+                <ErrorMessage name="email">
+                  {msg => (
+                    <Error>
+                      <BiErrorCircle /> {msg}
+                    </Error>
+                  )}
+                </ErrorMessage>
+              </LabelContainer>
+              <LabelContainer>
+                <div
+                  style={{
+                    display: 'flex',
+                    wtap: 'nowrap',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <label htmlFor="password">Password</label>
+                  <StyledField
+                    id="password"
+                    type="password"
+                    name="password"
+                    required
+                    placeholder="******"
+                    value={props.values.password}
+                    onChange={props.handleChange}
+                    className={
+                      props.touched.password && props.errors.password
+                        ? 'error'
+                        : ''
+                    }
+                  />
+                </div>
+                <ErrorMessage name="password">
+                  {msg => (
+                    <Error>
+                      <BiErrorCircle /> {msg}
+                    </Error>
+                  )}
+                </ErrorMessage>
+              </LabelContainer>
+              <Button type="submit">Log In</Button>
+            </InputContainer>
+          </Form>
+        );
+      }}
+    </Formik>
   );
 };

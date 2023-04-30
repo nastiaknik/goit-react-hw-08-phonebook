@@ -35,7 +35,7 @@ export const StyledNavLink = styled(NavLink)`
   text-align: start;
   text-decoration: none;
   padding: 5px 10px;
-  color: #5736a3;
+  color: teal;
   font-size: 16px;
   font-weight: 550;
   border-radius: 20px;
@@ -43,7 +43,7 @@ export const StyledNavLink = styled(NavLink)`
 
   &.active {
     color: white;
-    background-color: #5736a3;
+    background-color: teal;
     &:hover,
     :focus {
       opacity: 0.8;
@@ -52,6 +52,6 @@ export const StyledNavLink = styled(NavLink)`
   }
   &:hover,
   :focus {
-    color: #5736a3;
+    color: teal;
   }
 `;

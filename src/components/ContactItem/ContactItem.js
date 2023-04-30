@@ -5,15 +5,14 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/operations';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { BsStar, BsStarFill } from 'react-icons/bs';
-import { getInitials } from '../../utils/getInitials';
+import { Avatar } from '@chakra-ui/react';
 import { ContactEditForm } from '.././ContactEditForm/ContactEditForm';
 import {
   TableRow,
-  Avatar,
-  NameCeil,
-  NumberCeil,
-  ActionCeil,
+  Number,
+  BtnWrapper,
   Button,
+  ContactName,
 } from './ContactItem.styled';
 
 export const ContactItem = ({ contacts }) => {
@@ -58,12 +57,23 @@ export const ContactItem = ({ contacts }) => {
   return contacts.map(contact => {
     return (
       <TableRow key={contact.id}>
-        <NameCeil>
-          <Avatar>{getInitials(contact.name)}</Avatar>
+        <ContactName>
+          <Avatar
+            src="https://bit.ly/broken-link"
+            alt={contact.name}
+            name={contact.name}
+            getInitials={name =>
+              name
+                .split(' ')
+                .map(name => name.slice(0, 1).toUpperCase())
+                .slice(0, 2)
+                .join('')
+            }
+          />
           {contact.name}
-        </NameCeil>
-        <NumberCeil>{contact.number}</NumberCeil>
-        <ActionCeil>
+        </ContactName>
+        <Number>{contact.number}</Number>
+        <BtnWrapper>
           <Button type="button" onClick={() => onFavorite(contact)}>
             {favourites.find(fav => fav.id === contact.id) ? (
               <BsStarFill size={24} color="#ffd800" />
@@ -77,7 +87,7 @@ export const ContactItem = ({ contacts }) => {
           <Button type="button" onClick={() => onDelete(contact)}>
             <RiDeleteBinLine size={24} color="red" />
           </Button>
-        </ActionCeil>
+        </BtnWrapper>
       </TableRow>
     );
   });

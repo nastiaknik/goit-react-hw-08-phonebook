@@ -50,12 +50,12 @@ export const TableRow = styled.tr`
   }
 `;
 
-export const NumberCeil = styled.td`
+export const Number = styled.td`
   padding: 10px;
   text-align: left;
 `;
 
-export const NameCeil = styled.td`
+export const ContactName = styled.td`
   display: flex;
   align-items: center;
   gap: 15px;
@@ -63,7 +63,7 @@ export const NameCeil = styled.td`
   text-align: center;
 `;
 
-export const ActionCeil = styled.td`
+export const BtnWrapper = styled.td`
   display: flex;
   align-items: center;
   gap: 15px;
