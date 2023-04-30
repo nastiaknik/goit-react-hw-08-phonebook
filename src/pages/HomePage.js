@@ -15,7 +15,7 @@ export default function HomePage() {
         }}
       >
         <h2 style={{ fontWeight: 500, fontSize: 48, textAlign: 'center' }}>
-          Welcome
+          Welcome to PhoneBook!
         </h2>
       </div>
     </>

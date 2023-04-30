@@ -2,13 +2,23 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 15px;
-  background-color: #fff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+  height: 80px;
+  padding: 8px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #56a68d;
+  color: #fff;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
   z-index: 999;
 `;
 
@@ -16,25 +26,32 @@ export const Nav = styled.nav`
   display: flex;
   gap: 10px;
   margin-left: 20px;
+  align-items: center;
+  justify-content: baseline;
+  align-items: center;
 `;
 
 export const StyledNavLink = styled(NavLink)`
   text-align: start;
   text-decoration: none;
-  color: black;
   padding: 5px 10px;
+  color: #5736a3;
+  font-size: 16px;
+  font-weight: 550;
+  border-radius: 20px;
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.active {
-    background-color: orangered;
-    border-radius: 25px;
     color: white;
-
-    &:hover {
+    background-color: #5736a3;
+    &:hover,
+    :focus {
       opacity: 0.8;
       color: white;
     }
   }
-  &:hover {
-    color: orangered;
+  &:hover,
+  :focus {
+    color: #5736a3;
   }
 `;

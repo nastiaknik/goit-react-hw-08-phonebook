@@ -63,9 +63,15 @@ export const LabelContainer = styled.div`
 `;
 
 export const Error = styled.span`
-  display: block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
   color: tomato;
   text-align: start;
   width: 230px;
   font-size: 16px;
+  gap: 5px;
+  width: 100%;
 `;

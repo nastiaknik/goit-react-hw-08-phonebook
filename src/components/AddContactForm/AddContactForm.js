@@ -124,7 +124,7 @@ export const AddContactForm = () => {
                     alignItems: 'center',
                   }}
                 >
-                  <label htmlFor="number">Number</label>{' '}
+                  <label htmlFor="number">Number</label>
                   <StyledField
                     id="number"
                     type="tel"

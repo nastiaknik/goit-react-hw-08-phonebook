@@ -11,8 +11,11 @@ export const AppBar = () => {
     <Header>
       <Nav>
         <StyledNavLink to="/">Home</StyledNavLink>
-        {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        {isLoggedIn && (
+          <StyledNavLink to="/contacts">My Contacts</StyledNavLink>
+        )}
       </Nav>
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </Header>
   );
 };
